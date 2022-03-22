@@ -26,7 +26,7 @@ RSpec.describe UniformNotifier::BugsnagNotifier do
         UniformNotifier::Exception.new(notification_data)
       ).and_yield(report)
       expect(report).to receive(:severity=).with('warning')
-      expect(report).to receive(:add_tab).with(:bullet, title: notification_data)
+      expect(report).to receive(:add_tab).with(:bullet, { title: notification_data })
       expect(report).to receive(:grouping_hash=).with(notification_data)
 
       UniformNotifier.bugsnag = true
